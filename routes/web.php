@@ -12,7 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //echo '<pre>';
+    //return var_export(anetwork\Category::where('title', 'Gadget')->first()->id);
+    return anetwork\Category::orderBy('priority')->get()->toArray();
+});
+
+Route::get('/input.json', function () {
+    // Post product
+    return 'hi there';
+});
+
+Route::get('/output.json', function () {
+    // Get sorted products
+    return 'hi there';
 });
 
 Auth::routes();
