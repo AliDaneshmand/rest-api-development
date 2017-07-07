@@ -1,11 +1,11 @@
 <?php
 
-namespace anetwork\Http\Controllers;
+namespace AliAssignment\Http\Controllers;
 
 use Illuminate\Http\Request;
-use anetwork\User;
-use anetwork\Product;
-use anetwork\Category;
+use AliAssignment\User;
+use AliAssignment\Product;
+use AliAssignment\Category;
 
 class ProductController extends Controller
 {
@@ -71,7 +71,7 @@ class ProductController extends Controller
             'name' => $product->name,
             'price' => $product->price,
             'discount' => $product->discount,
-            'type' => $product->fk_category,
+            'type' => $product->category->title,
             'cost' => $product->cost,
         ];
     }
@@ -141,7 +141,7 @@ class ProductController extends Controller
         
         // make list of categories' ID and their priorities
         foreach($categories as $category) {
-            $priorities[ $category->id ] = $category->priority;
+            $priorities[ $category->title ] = $category->priority;
         }
         
         return $priorities;

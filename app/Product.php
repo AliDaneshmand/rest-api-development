@@ -1,6 +1,6 @@
 <?php
 
-namespace anetwork;
+namespace AliAssignment;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,4 +21,12 @@ class Product extends Model
     protected $fillable = [
         'name', 'price', 'discount', 'category', 'cost',
     ];
+    
+    /*
+     * Relationship with AliAssignment\Category.
+     */
+    public function category()
+    {
+        return $this->belongsTo('AliAssignment\Category', 'fk_category');
+    }
 }
