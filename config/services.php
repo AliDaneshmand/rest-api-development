@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => anetwork\User::class,
+        'model' => AliAssignment\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
