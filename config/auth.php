@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => anetwork\User::class,
+            'model' => AliAssignment\User::class,
         ],
 
         // 'users' => [

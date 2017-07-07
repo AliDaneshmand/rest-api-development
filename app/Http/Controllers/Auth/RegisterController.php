@@ -1,9 +1,9 @@
 <?php
 
-namespace anetwork\Http\Controllers\Auth;
+namespace AliAssignment\Http\Controllers\Auth;
 
-use anetwork\User;
-use anetwork\Http\Controllers\Controller;
+use AliAssignment\User;
+use AliAssignment\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 

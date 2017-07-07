@@ -1,6 +1,6 @@
 <?php
 
-namespace anetwork\Providers;
+namespace AliAssignment\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

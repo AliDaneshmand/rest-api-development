@@ -1,8 +1,8 @@
 <?php
 
-namespace anetwork\Http\Controllers\Auth;
+namespace AliAssignment\Http\Controllers\Auth;
 
-use anetwork\Http\Controllers\Controller;
+use AliAssignment\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller
