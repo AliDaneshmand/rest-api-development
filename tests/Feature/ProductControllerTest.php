@@ -33,15 +33,15 @@ class ProductControllerTest extends TestCase
     {
         $response = $this->json('POST', '/input.json', [
             'name' => 'TestProduct',
-            'price' => '500',
-            'discount' => '$15',
+            'price' => '$500',
+            'discount' => '15%',
             'type' => 'Gadget',
             'cost' => '350',
         ]);
         
         $response->assertStatus(200)
-                 ->assertJsonStructure([
-                     'successful', 'id', 'name',
+                 ->assertJson([
+                     'status' => 'successful',
                  ]);
     }
 }
