@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as FakerFactory;
-use anetwork\Category;
-use anetwork\Product;
+use AliAssignment\Category;
+use AliAssignment\Product;
 
 class ProductsTableSeeder extends Seeder
 {
