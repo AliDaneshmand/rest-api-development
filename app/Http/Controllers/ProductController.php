@@ -179,8 +179,8 @@ class ProductController extends Controller
     }
     
     /*
-     * Making final list to print in a smart order according to 
-     * maximize company's benefit and selling all products.
+     * Making final list printable in a smart order according to 
+     * maximize company's benefit and selling every products.
      * 
      * @param array $list List of grouped and sorted products
      * 
@@ -217,10 +217,68 @@ class ProductController extends Controller
     }
     
     /*
-     * Inserting posted list of products to database
+     * Inserting posted a product to database.
+     * The Route to this method is excluded from CSRF verification.
+     * 
+     * @param Request $request Laravel Http request
+     * 
+     * @return array
      */
-    public function input()
+    public function input(Request $request)
     {
+        // Fields validation rules 
+        $this->validate($request, [
+            'name' => 'required|max:50',
+            'price' => [
+                'required', 
+                'regex:/^((\$)?\d+(\.\d{2})?)$/',
+            ],
+            'discount' => [
+                'required', 
+                'regex:/^(((\$)?\d+(\.\d{2})?)|([0-9]+(\%)?))$/',
+            ],
+            'type' => 'required|alpha_num',
+            'cost' => [
+                'required', 
+                'regex:/^((\$)?\d+(\.\d{2})?)$/',
+            ],
+        ]);
         
+        /*
+         * If the 'discount' field is set as dollar value, it must be
+         * converted to percentage before inserting to database
+         */
+        if(preg_match('/^(\$\d+(\.\d{2})?)$/', $request->discount)) {
+            $request->discount = str_replace_first('$', null, $request->discount);
+            $request->discount = (((int) $request->discount) * 100) / 
+                                 ((int) $request->cost);
+        }
+        
+        // Cheking the existance of the type in the Category database table
+        $cat_id = 0;
+        if(ctype_digit($request->type)) {
+            $category = Category::find($request->type);
+            $cat_id = $category->id;
+        }
+        else {
+            $category = Category::where('title', $request->type)->first();
+            $cat_id = $category->id;
+        }
+        
+        // Return an error on not exists category
+        if($cat_id === 0) {
+            return ['error' => 'Category is not exists!'];
+        }
+        
+        // Store to data base
+        Product::create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'discount' => $request->discount,
+            'category' => $cat_id,
+            'cost' =>$request->cost,
+        ]);
+        
+        return ['successful' => 'Product inserted successfully!'];
     }
 }

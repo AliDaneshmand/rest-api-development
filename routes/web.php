@@ -18,7 +18,7 @@ Route::get('/', function () {
     return 'Rest API development assignment.';
 });
 
-Route::get('/input.json', 'ProductController@input');
+Route::post('/input.json', 'ProductController@input');
 
 Route::get('/output.json', 'ProductController@output');
 
