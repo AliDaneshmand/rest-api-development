@@ -217,7 +217,7 @@ class ProductController extends Controller
     }
     
     /*
-     * Inserting posted a product to database.
+     * Inserting a posted product to database.
      * The Route to this method is excluded from CSRF verification.
      * 
      * @param Request $request Laravel Http request
@@ -271,7 +271,7 @@ class ProductController extends Controller
         }
         
         // Store to data base
-        Product::create([
+        $product = Product::create([
             'name' => $request->name,
             'price' => $request->price,
             'discount' => $request->discount,
@@ -279,6 +279,10 @@ class ProductController extends Controller
             'cost' =>$request->cost,
         ]);
         
-        return ['successful' => 'Product inserted successfully!'];
+        return [
+            'successful' => 'Product inserted successfully!',
+            'id' => $product->id,
+            'name' => $product->name,
+        ];
     }
 }
