@@ -12,8 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //echo '<pre>';
+    //return var_export(anetwork\Category::where('title', 'Gadget')->first()->id);
+    //return anetwork\Category::orderBy('priority')->get()->toArray();
+    return 'Rest API development assignment.';
 });
+
+Route::post('/input.json', 'ProductController@input');
+
+Route::get('/output.json', 'ProductController@output');
 
 Auth::routes();
 

@@ -1,11 +1,13 @@
 <?php
 
+
 namespace AliAssignment;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+
     /*
      * Relationship with AliAssignment\Product.
      */
