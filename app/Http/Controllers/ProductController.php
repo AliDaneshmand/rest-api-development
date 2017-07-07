@@ -71,7 +71,7 @@ class ProductController extends Controller
             'name' => $product->name,
             'price' => $product->price,
             'discount' => $product->discount,
-            'type' => $product->category,
+            'type' => $product->fk_category,
             'cost' => $product->cost,
         ];
     }
@@ -275,7 +275,7 @@ class ProductController extends Controller
             'name' => $request->name,
             'price' => $request->price,
             'discount' => $request->discount,
-            'category' => $cat_id,
+            'fk_category' => $cat_id,
             'cost' =>$request->cost,
         ]);
         

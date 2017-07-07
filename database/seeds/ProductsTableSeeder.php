@@ -31,7 +31,7 @@ class ProductsTableSeeder extends Seeder
             $this->createProduct([
                 'price' => $price,
                 'discount' => $discount,
-                'category' => Category::inRandomOrder()->first()->id,
+                'fk_category' => Category::inRandomOrder()->first()->id,
                 'cost' => $cost,
             ]);
             
@@ -56,7 +56,7 @@ class ProductsTableSeeder extends Seeder
         $faker = FakerFactory::create();
         
         Product::create(array_merge([
-            'name' => $faker->name
+            'name' => $faker->company
         ], $record));
     }
     
@@ -71,31 +71,31 @@ class ProductsTableSeeder extends Seeder
             [
                 'price' => 1200,
                 'discount' => 10,
-                'category' => Category::where('title', 'Gadget')->first()->id,
+                'fk_category' => Category::where('title', 'Gadget')->first()->id,
                 'cost' => 900,
             ],
             [
                 'price' => 1270,
                 'discount' => 15,
-                'category' => Category::where('title', 'Gadget')->first()->id,
+                'fk_category' => Category::where('title', 'Gadget')->first()->id,
                 'cost' => 1000,
             ],
             [
                 'price' => 1300,
                 'discount' => 12,
-                'category' => Category::where('title', 'Gadget')->first()->id,
+                'fk_category' => Category::where('title', 'Gadget')->first()->id,
                 'cost' => 1100,
             ],
             [
                 'price' => 1270,
                 'discount' => 15,
-                'category' => Category::where('title', 'Sport')->first()->id,
+                'fk_category' => Category::where('title', 'Sport')->first()->id,
                 'cost' => 1000,
             ],
             [
                 'price' => 700,
                 'discount' => 5,
-                'category' => Category::where('title', 'Home')->first()->id,
+                'fk_category' => Category::where('title', 'Home')->first()->id,
                 'cost' => 500,
             ],
         ];
