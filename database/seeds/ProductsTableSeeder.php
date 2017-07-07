@@ -25,7 +25,7 @@ class ProductsTableSeeder extends Seeder
             $upperBound = floor($price % 71);
             $lowerBound = $upperBound < 10 ? 0 : ($i % 10);
             $discount = rand($lowerBound, $upperBound);
-            $price += ($price * $discount) / 100;
+            $price += ($cost * $discount) / 100;
             
             // Create new fake product
             $this->createProduct([
