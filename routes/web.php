@@ -14,18 +14,13 @@
 Route::get('/', function () {
     //echo '<pre>';
     //return var_export(anetwork\Category::where('title', 'Gadget')->first()->id);
-    return anetwork\Category::orderBy('priority')->get()->toArray();
+    //return anetwork\Category::orderBy('priority')->get()->toArray();
+    return 'Rest API development assignment.';
 });
 
-Route::get('/input.json', function () {
-    // Post product
-    return 'hi there';
-});
+Route::get('/input.json', 'ProductController@input');
 
-Route::get('/output.json', function () {
-    // Get sorted products
-    return 'hi there';
-});
+Route::get('/output.json', 'ProductController@output');
 
 Auth::routes();
 
