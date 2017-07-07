@@ -3,6 +3,7 @@
 namespace AliAssignment\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use AliAssignment\User;
 use AliAssignment\Product;
 use AliAssignment\Category;
@@ -254,6 +255,11 @@ class ProductController extends Controller
                                  ((int) $request->cost);
         }
         
+        // Remove percentage and dollar signs
+        $request->price = $this->getNumericValue($request->price);
+        $request->discount = $this->getNumericValue($request->discount);
+        $request->cost = $this->getNumericValue($request->cost);
+        
         // Cheking the existance of the type in the Category database table
         $cat_id = 0;
         if(ctype_digit($request->type)) {
@@ -267,7 +273,10 @@ class ProductController extends Controller
         
         // Return an error on not exists category
         if($cat_id === 0) {
-            return ['error' => 'Category is not exists!'];
+            return Response::json([
+                'status' => 'failed',
+                'message' => 'Category is not exists!',
+            ], 400);
         }
         
         // Store to data base
@@ -279,10 +288,23 @@ class ProductController extends Controller
             'cost' =>$request->cost,
         ]);
         
-        return [
-            'successful' => 'Product inserted successfully!',
+        return Response::json([
+            'status' => 'successful',
+            'message' => 'Product inserted successfully!',
             'id' => $product->id,
             'name' => $product->name,
-        ];
+        ], 200);
+    }
+    
+    /*
+     * Fetch numeric characters from a string.
+     * 
+     * @param string $string String with numeric characters
+     * 
+     * @return int
+     */
+    private function getNumericValue($string)
+    {
+        return intval(preg_replace('/[^0-9]+/', '', $string), 10);
     }
 }
