@@ -16,7 +16,7 @@ class Category extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title', 30)->unique();
-            $table->integer('priority');
+            $table->smallInteger('priority')->unsigned();
         });
     }
 
