@@ -171,11 +171,11 @@ return [
         /*
          * Application Service Providers...
          */
-        anetwork\Providers\AppServiceProvider::class,
-        anetwork\Providers\AuthServiceProvider::class,
-        // anetwork\Providers\BroadcastServiceProvider::class,
-        anetwork\Providers\EventServiceProvider::class,
-        anetwork\Providers\RouteServiceProvider::class,
+        AliAssignment\Providers\AppServiceProvider::class,
+        AliAssignment\Providers\AuthServiceProvider::class,
+        // AliAssignment\Providers\BroadcastServiceProvider::class,
+        AliAssignment\Providers\EventServiceProvider::class,
+        AliAssignment\Providers\RouteServiceProvider::class,
 
     ],
 
