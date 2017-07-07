@@ -1,6 +1,6 @@
 <?php
 
-namespace anetwork\Http\Middleware;
+namespace AliAssignment\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

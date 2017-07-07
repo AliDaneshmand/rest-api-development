@@ -1,6 +1,6 @@
 <?php
 
-namespace anetwork\Http\Controllers;
+namespace AliAssignment\Http\Controllers;
 
 use Illuminate\Http\Request;
 

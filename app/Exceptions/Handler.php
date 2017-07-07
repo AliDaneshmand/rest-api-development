@@ -1,6 +1,6 @@
 <?php
 
-namespace anetwork\Exceptions;
+namespace AliAssignment\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
