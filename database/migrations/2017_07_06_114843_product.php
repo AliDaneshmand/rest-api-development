@@ -16,10 +16,10 @@ class Product extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 50);
-            $table->float('price');
-            $table->integer('discount');
+            $table->float('price')->unsigned();
+            $table->integer('discount')->unsigned();
             $table->integer('fk_category')->unsigned();
-            $table->float('cost');
+            $table->float('cost')->unsigned();
             
             $table->foreign('fk_category')->references('id')->on('categories');
         });
